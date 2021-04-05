@@ -1,0 +1,26 @@
+version: "3"
+services:
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    command: make start
+
+  frontend:
+    image: node:14
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: make watch
+
+  db:
+    image: postgres:13.2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
