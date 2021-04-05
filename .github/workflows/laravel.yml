@@ -26,8 +26,6 @@ jobs:
 
     - name: Setup project
       run: make install
-      env:
-        DB_HOST: localhost
 
     - name: Check lint
       run: make lint
