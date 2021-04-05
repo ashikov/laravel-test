@@ -25,7 +25,7 @@ jobs:
         composer-lock: './composer.lock'
 
     - name: Setup project
-      run: make setup
+      run: make install
       env:
         DB_HOST: localhost
 
