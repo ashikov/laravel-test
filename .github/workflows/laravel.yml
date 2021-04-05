@@ -17,6 +17,8 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
 
     steps:
     - uses: actions/checkout@v2
@@ -28,6 +30,8 @@ jobs:
 
     - name: Setup project
       run: make install
+      env:
+        DB_HOST: localhost
 
     - name: Check lint
       run: make lint
